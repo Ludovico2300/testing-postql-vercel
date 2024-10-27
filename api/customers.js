@@ -1,8 +1,8 @@
-const pool = require("../db"); // Importa il pool di connessione
+import { query } from "../db"; // Importa il pool di connessione
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM customers");
+    const result = await query("SELECT * FROM customers");
     res.status(200).json(result.rows);
   } catch (err) {
     console.error("Errore nel server:", err); // Aggiungi più dettagli
