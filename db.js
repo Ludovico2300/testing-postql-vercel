@@ -1,4 +1,4 @@
-import { Pool } from "pg";
+const { Pool } = require("pg");
 require("dotenv").config();
 
 const pool = new Pool({
@@ -8,4 +8,10 @@ const pool = new Pool({
   },
 });
 
-export default pool; // Esporta il pool di connessione
+// Test della connessione al database
+pool
+  .connect()
+  .then(() => console.log("Connessione al database stabilita con successo"))
+  .catch((err) => console.error("Errore nella connessione al database:", err));
+
+module.exports = pool;
