@@ -1,6 +1,6 @@
 // Importa le dipendenze
-const express = require("express");
-const { Pool } = require("pg");
+import express from "express";
+import { Pool } from "pg";
 require("dotenv").config();
 
 // Inizializza l'app Express

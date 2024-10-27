@@ -1,16 +1,8 @@
-const { Pool } = require("pg");
-require("dotenv").config();
+import { query } from "../db"; // Importa il pool di connessione
 
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
-
-module.exports = async (req, res) => {
+export default async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM customers");
+    const result = await query("SELECT * FROM customers");
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err.message);
